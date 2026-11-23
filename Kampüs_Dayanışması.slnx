@@ -1,0 +1,7 @@
+<Solution>
+  <Configurations>
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Project Path="Kampüs_Dayanışması/Kampüs_Dayanışması.vcxproj" />
+</Solution>
