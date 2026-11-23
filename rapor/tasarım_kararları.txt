@@ -1,0 +1,1 @@
+Tasarım Kararı (Bayrak Düzeni): Hocanın proje dokümanındaki bayrak listesini (üst dönem, lab yetkisi, engelsiz refakat) ve Boole eşleştirme önermelerini (A: bölge, B: yetkinlik, C: boş saat, D: sınav durumu) tek bir 8-bit alanda birleştiren ve Assembly'de TEST komutuyla doğrudan bit maskelemesine imkan tanıyan 0'dan 6'ya sıralı bit düzenini seçtim.
