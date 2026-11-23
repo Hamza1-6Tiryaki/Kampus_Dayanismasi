@@ -27,3 +27,11 @@ inline unsigned Aciliyet(unsigned p) { return (p >> 24) & 0x0Fu; }
 inline unsigned Bina(unsigned p) { return (p >> 16) & 0xFFu; }
 inline unsigned Donem(unsigned p) { return (p >> 8) & 0xFFu; }
 inline unsigned Bayrak(unsigned p) { return p & 0xFFu; }
+
+// x86 Assembly (src/asm_modulleri.cpp) Paket Kodlayici ve Cozucu Prototipleri
+unsigned KampusVeriKodla_ASM(unsigned kat, unsigned acil, unsigned bina, unsigned donem, unsigned bayrak);
+unsigned Kategori_ASM(unsigned p);
+unsigned Aciliyet_ASM(unsigned p);
+unsigned Bina_ASM(unsigned p);
+unsigned Donem_ASM(unsigned p);
+unsigned Bayrak_ASM(unsigned p);
