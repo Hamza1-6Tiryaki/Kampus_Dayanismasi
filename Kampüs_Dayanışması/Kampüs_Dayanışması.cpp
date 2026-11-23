@@ -1,11 +1,13 @@
 #include <cstdio>
 
-// Fonksiyonlarin test_paket.cpp icinde oldugunu derleyiciye bildiriyoruz
+// Fonksiyonlarin test dosyalarinda oldugunu derleyiciye bildiriyoruz
 void PaketTestleriniCalistir();
 void AsmKarsilastirmaTesti();
+void BooleTestleriniCalistir();
 
 int main() {
     PaketTestleriniCalistir();
     AsmKarsilastirmaTesti();
+    BooleTestleriniCalistir();
     return 0;
 }

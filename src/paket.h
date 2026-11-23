@@ -28,6 +28,18 @@ inline unsigned Bina(unsigned p) { return (p >> 16) & 0xFFu; }
 inline unsigned Donem(unsigned p) { return (p >> 8) & 0xFFu; }
 inline unsigned Bayrak(unsigned p) { return p & 0xFFu; }
 
+// Boole Eslestirme Fonksiyonlari (C++ Referans Surumleri)
+// A: Ayni bolge/fakulte, B: Ders/materyal yetkinligi, C: Bos saat uyumu, D: Destekcinin o gun sinavi var
+// Ham Ifade: F = (A . B . D') + (A . B . D) + (C . B . D')
+inline bool FHam(bool A, bool B, bool C, bool D) {
+    return (A && B && !D) || (A && B && D) || (C && B && !D);
+}
+
+// Sadelesmis Ifade: F = B . (A + (C . D'))
+inline bool FCpp(bool A, bool B, bool C, bool D) {
+    return B && (A || (C && !D));
+}
+
 // x86 Assembly (src/asm_modulleri.cpp) Paket Kodlayici ve Cozucu Prototipleri
 unsigned KampusVeriKodla_ASM(unsigned kat, unsigned acil, unsigned bina, unsigned donem, unsigned bayrak);
 unsigned Kategori_ASM(unsigned p);
