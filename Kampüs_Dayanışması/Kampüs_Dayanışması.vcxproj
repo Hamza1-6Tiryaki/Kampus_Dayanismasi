@@ -77,6 +77,7 @@
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
+      <AdditionalIncludeDirectories>$(ProjectDir)src</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -139,7 +140,20 @@
     </Manifest>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\src\asm_modulleri.cpp" />
+    <ClCompile Include="..\src\kalicilik.cpp" />
     <ClCompile Include="Kampüs_Dayanışması.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\src\agac.h" />
+    <ClInclude Include="..\src\graf.h" />
+    <ClInclude Include="..\src\hash.h" />
+    <ClInclude Include="..\src\heap.h" />
+    <ClInclude Include="..\src\listeler.h" />
+    <ClInclude Include="..\src\on_bellek.h" />
+    <ClInclude Include="..\src\paket.h" />
+    <ClInclude Include="..\src\yigin_kuyruk.h" />
+    <ClInclude Include="..\src\Üst Bilgi.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
