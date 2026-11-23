@@ -142,6 +142,7 @@
   <ItemGroup>
     <ClCompile Include="..\src\asm_modulleri.cpp" />
     <ClCompile Include="..\src\kalicilik.cpp" />
+    <ClCompile Include="..\test\test_paket.cpp" />
     <ClCompile Include="Kampüs_Dayanışması.cpp" />
   </ItemGroup>
   <ItemGroup>

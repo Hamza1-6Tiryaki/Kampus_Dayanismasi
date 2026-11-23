@@ -10,3 +10,20 @@ const unsigned BAYRAK_UST_DONEM = 1u << 4; // Bit 4 (16) : Ust donem ogrencisi
 const unsigned BAYRAK_LAB_YETKI = 1u << 5; // Bit 5 (32) : Lab yetkisi
 const unsigned BAYRAK_REFAKAT = 1u << 6; // Bit 6 (64) : Engelsiz refakat gerekli
 // Bit 7 (128): Bos / Rezerve
+
+// 32-bit Paket Kodlayici (C++ Referans Surumu)
+// Her alan once AND ile maskelenir (tasma korumasi), sonra sola kaydirilir ve OR ile birlestirilir.
+inline unsigned KodlaCpp(unsigned kat, unsigned acil, unsigned bina, unsigned donem, unsigned bayrak) {
+    return ((kat & 0x0Fu) << 28) |
+        ((acil & 0x0Fu) << 24) |
+        ((bina & 0xFFu) << 16) |
+        ((donem & 0xFFu) << 8) |
+        (bayrak & 0xFFu);
+}
+
+// 32-bit Paket Cozuculer: Once ilgili alani en saga kaydir (>>), sonra maskele (&)
+inline unsigned Kategori(unsigned p) { return (p >> 28) & 0x0Fu; }
+inline unsigned Aciliyet(unsigned p) { return (p >> 24) & 0x0Fu; }
+inline unsigned Bina(unsigned p) { return (p >> 16) & 0xFFu; }
+inline unsigned Donem(unsigned p) { return (p >> 8) & 0xFFu; }
+inline unsigned Bayrak(unsigned p) { return p & 0xFFu; }

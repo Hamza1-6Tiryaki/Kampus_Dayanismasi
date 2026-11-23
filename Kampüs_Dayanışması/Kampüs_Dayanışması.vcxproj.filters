@@ -24,6 +24,9 @@
     <ClCompile Include="..\src\kalicilik.cpp">
       <Filter>Kaynak Dosyalar</Filter>
     </ClCompile>
+    <ClCompile Include="..\test\test_paket.cpp">
+      <Filter>Kaynak Dosyalar</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\Üst Bilgi.h">
