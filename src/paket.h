@@ -47,3 +47,5 @@ unsigned Aciliyet_ASM(unsigned p);
 unsigned Bina_ASM(unsigned p);
 unsigned Donem_ASM(unsigned p);
 unsigned Bayrak_ASM(unsigned p);
+int EslesmeUygunMu_ASM(unsigned int paket);
+

@@ -103,3 +103,33 @@ unsigned Bayrak_ASM(unsigned p) {
     }
     return sonuc;
 }
+
+// 6. Sadelesmis Boole Eslestirme Karar Modulu (x86 Assembly Surumu)
+// Sadelesmis Ifade: F = B . (A + (C . D'))
+// Bit Sirasi: Bit 0 (1) = A (Bolge), Bit 1 (2) = B (Yetkinlik), Bit 2 (4) = C (Bos saat), Bit 3 (8) = D (Sinavi var)
+int EslesmeUygunMu_ASM(unsigned int paket) {
+    int sonuc = 0;          // Varsayilan karar: 0 (Uygun degil)
+    _asm {
+        MOV  EAX, paket     // 32-bit veri paketini EAX yazmacina yukle
+        AND  EAX, 0xFF      // Sadece alt 8 bitlik bayrak alanini (Bit 7-0) birak, ust alanlari sifirla
+
+        TEST EAX, 2         // Bit 1 (B = 2, Yetkinlik) kontrolu: B & 2 islemi yap (EAX degismez, ZF guncellenir)
+        JZ   BITTI          // ZF=1 (B=0) ise yetkinlik yoktur; F = B.(...) ifadesi 0 olacagi icin BITTI'ye atla
+
+        TEST EAX, 1         // Bit 0 (A = 1, Ayni bolge) kontrolu: B=1 iken A=1 ise diger sartlara bakmaya gerek yok
+        JNZ  UYGUN          // ZF=0 (A=1) ise B.A = 1 saglandi; kisa devre ile dogrudan UYGUN etiketine atla
+
+        TEST EAX, 4         // Bit 2 (C = 4, Bos saat uyumu) kontrolu: A=0 oldugu icin (C . D') terimi 1 olmali
+        JZ   BITTI          // ZF=1 (C=0) ise bos saat uyumu yoktur; eslesme saglanamaz, BITTI'ye atla
+
+        TEST EAX, 8         // Bit 3 (D = 8, Destekcinin o gun sinavi var) kontrolu: D' = 1 olmasi icin D = 0 olmali
+        JNZ  BITTI          // ZF=0 (D=1, yani sinavi var) ise D'=0 olur; eslesme saglanamaz, BITTI'ye atla
+
+    UYGUN:                  // Eslesme kosullari (B=1 ve (A=1 veya (C=1 ve D=0))) basariyla saglandi
+        MOV  sonuc, 1       // Sonuc degiskenine 1 (Eslesme uygun) degerini ata
+
+    BITTI:                  // Cikis noktasi: Kosullar saglanmadiysa sonuc baslangictaki 0 degerini korur
+    }
+    return sonuc;
+}
+

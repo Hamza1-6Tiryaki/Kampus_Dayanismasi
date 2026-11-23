@@ -31,3 +31,24 @@ void BooleTestleriniCalistir() {
     printf("+----+---+---+---+---+------+------+\n");
     printf("[BASARILI] Gorev 2.1: 16 satirlik Boole dogruluk tablosunda FHam ve FCpp birebir eslesti!\n");
 }
+
+void BooleAsmTestleriniCalistir() {
+    for (unsigned i = 0; i < 16; ++i) {
+        bool A = (i & 1u) != 0;
+        bool B = (i & 2u) != 0;
+        bool C = (i & 4u) != 0;
+        bool D = (i & 8u) != 0;
+
+        // Ust bitlerin (kat=3, acil=10, bina=45, donem=6) AND EAX, 0xFF ile
+        // maskelenip yok sayildigini da test etmek icin dolu bir 32-bit paket uret
+        unsigned paket = KodlaCpp(3, 10, 45, 6, i);
+
+        int asmSonuc = EslesmeUygunMu_ASM(paket);
+        int cppSonuc = FCpp(A, B, C, D) ? 1 : 0;
+
+        assert(asmSonuc == cppSonuc);
+    }
+
+    printf("[BASARILI] Gorev 1.4: 16 olasiligin tamaminda Assembly ve C++ Boole sonuclari eslesti!\n");
+}
+
